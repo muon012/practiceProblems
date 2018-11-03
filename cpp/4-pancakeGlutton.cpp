@@ -26,62 +26,81 @@ using namespace std;
 int main()
 {
 
-    int customers[10]{};   // Array of ten customers whose number of pancakes will be input at their index
-    int highest{};         // This is the amount of highest cakes eaten by a customer, we assume it is the first value in the array
-    int highestCustomer{1}; // Index of highest, start at 1 for testing purposes.
-    int lowest{};          // This will be the amount of least cakes eaten
-    int lowestCustomer{1};  // The index of lowest, start at 1 for testing purposes.
-    cout << "Enter the amounf of pancakes each person ate:" << endl;
-    cout << "Person 1: ";
-    cin >> customers[0];
-    cout << "Person 2: ";
-    cin >> customers[1];
-    cout << "Person 3: ";
-    cin >> customers[2];
-    cout << "Person 4: ";
-    cin >> customers[3];
-    cout << "Person 5: ";
-    cin >> customers[4];
-    cout << "Person 6: ";
-    cin >> customers[5];
-    cout << "Person 7: ";
-    cin >> customers[6];
-    cout << "Person 8: ";
-    cin >> customers[7];
-    cout << "Person 9: ";
-    cin >> customers[8];
-    cout << "Person 10: ";
-    cin >> customers[9];
+    int customers[5]{12, 3, 2, 9, 15};   // Array of ten customers whose number of pancakes will be input at their index
+    // int highest{};         // This is the amount of highest cakes eaten by a customer, we assume it is the first value in the array
+    // int highestCustomer{1}; // Index of highest, start at 1 for testing purposes.
+    // int lowest{};          // This will be the amount of least cakes eaten
+    // int lowestCustomer{1};  // The index of lowest, start at 1 for testing purposes.
+    // cout << "Enter the amounf of pancakes each person ate:" << endl;
+    // cout << "Person 1: ";
+    // cin >> customers[0];
+    // cout << "Person 2: ";
+    // cin >> customers[1];
+    // cout << "Person 3: ";
+    // cin >> customers[2];
+    // cout << "Person 4: ";
+    // cin >> customers[3];
+    // cout << "Person 5: ";
+    // cin >> customers[4];
+    // cout << "Person 6: ";
+    // cin >> customers[5];
+    // cout << "Person 7: ";
+    // cin >> customers[6];
+    // cout << "Person 8: ";
+    // cin >> customers[7];
+    // cout << "Person 9: ";
+    // cin >> customers[8];
+    // cout << "Person 10: ";
+    // cin >> customers[9];
 
     cout << "[ ";
-    for (int i{0}; i < 10; i++)
+    for (int i{0}; i < 5; i++)
     {
         cout << customers[i] << " ";
     }
     cout << "]" << endl;
 
-    // Finding the highest value
-    highest = customers[0];
-    for (int i{1}; i < 10; i++)
-    {
-        if (highest < customers[i])
-        {
-            highest = customers[i];
-            highestCustomer = i + 1;
-        }
-    }
-    cout << "The highest amount of pancakes(" << highest << ") was eaten by Person " << highestCustomer << endl;
+    // // Finding the highest value
+    // highest = customers[0];
+    // for (int i{1}; i < 10; i++)
+    // {
+    //     if (highest < customers[i])
+    //     {
+    //         highest = customers[i];
+    //         highestCustomer = i + 1;
+    //     }
+    // }
+    // cout << "The highest amount of pancakes(" << highest << ") was eaten by Person " << highestCustomer << endl;
 
-    // Finding the lowest value
-    lowest = customers[0];
-    for (int i{1}; i < 10; i++)
-    {
-        if (lowest > customers[i])
-        {
-            lowest = customers[i];
-            lowestCustomer = i + 1;
+    // // Finding the lowest value
+    // lowest = customers[0];
+    // for (int i{1}; i < 10; i++)
+    // {
+    //     if (lowest > customers[i])
+    //     {
+    //         lowest = customers[i];
+    //         lowestCustomer = i + 1;
+    //     }
+    // }
+
+    // Sorting the array
+    int temp{};
+
+    for(int i{};i < 9; i++){
+        if(customers[i] > customers[i +1]){
+            temp = customers[i];
+            customers[i] = customers[i + 1];
+            customers[i + 1] = temp;
         }
     }
-    cout << "The lowest amount of pancakes(" << lowest << ") was eaten by Person " << lowestCustomer << endl;
+    // cout << "The lowest amount of pancakes(" << lowest << ") was eaten by Person " << lowestCustomer << endl;
+    
+    cout << "[ ";
+    for (int i{0}; i < 5; i++)
+    {
+        cout << customers[i] << " ";
+    }
+    cout << "]" << endl;
+
     return 0;
 }
