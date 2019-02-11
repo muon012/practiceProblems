@@ -1,5 +1,3 @@
-    // for(int i{};i < 9; i++){
-    //     if(customers[i] > customers[i +1]){
-
-    //     }
-    // }
+    for(int i{}; i < num_of_customers; i++){
+        customers_pancakes[i][1] = 0;
+    }

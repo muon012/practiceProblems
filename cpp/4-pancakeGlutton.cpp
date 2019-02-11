@@ -25,82 +25,67 @@ using namespace std;
 
 int main()
 {
+    const int num_of_customers{10}; // Number of costumers;
+    int customers_pancakes[10][2]{ {1, 0}, {2, 0}, {3, 0}, {4, 0}, {5, 0}, {6, 0}, {7, 0}, {8, 0}, {9, 0}, {10, 0}}; // 2D-array representing each customer and the number of pancakes each ate;
+    int winner_customer{}; // This represents the index of the customer with the highest/lowest amount of pancakes;
+    cout << "Enter how many pancakes each cumstomer ate: " << endl;
 
-    int customers[5]{12, 3, 2, 9, 15};   // Array of ten customers whose number of pancakes will be input at their index
-    // int highest{};         // This is the amount of highest cakes eaten by a customer, we assume it is the first value in the array
-    // int highestCustomer{1}; // Index of highest, start at 1 for testing purposes.
-    // int lowest{};          // This will be the amount of least cakes eaten
-    // int lowestCustomer{1};  // The index of lowest, start at 1 for testing purposes.
-    // cout << "Enter the amounf of pancakes each person ate:" << endl;
-    // cout << "Person 1: ";
-    // cin >> customers[0];
-    // cout << "Person 2: ";
-    // cin >> customers[1];
-    // cout << "Person 3: ";
-    // cin >> customers[2];
-    // cout << "Person 4: ";
-    // cin >> customers[3];
-    // cout << "Person 5: ";
-    // cin >> customers[4];
-    // cout << "Person 6: ";
-    // cin >> customers[5];
-    // cout << "Person 7: ";
-    // cin >> customers[6];
-    // cout << "Person 8: ";
-    // cin >> customers[7];
-    // cout << "Person 9: ";
-    // cin >> customers[8];
-    // cout << "Person 10: ";
-    // cin >> customers[9];
-
-    cout << "[ ";
-    for (int i{0}; i < 5; i++)
-    {
-        cout << customers[i] << " ";
+    for(int i{}; i < num_of_customers; i++){
+        cout << "Customer " << customers_pancakes[i][0] << ": ";
+        cin >> customers_pancakes[i][1];
     }
-    cout << "]" << endl;
 
-    // // Finding the highest value
-    // highest = customers[0];
-    // for (int i{1}; i < 10; i++)
-    // {
-    //     if (highest < customers[i])
-    //     {
-    //         highest = customers[i];
-    //         highestCustomer = i + 1;
-    //     }
-    // }
-    // cout << "The highest amount of pancakes(" << highest << ") was eaten by Person " << highestCustomer << endl;
-
-    // // Finding the lowest value
-    // lowest = customers[0];
-    // for (int i{1}; i < 10; i++)
-    // {
-    //     if (lowest > customers[i])
-    //     {
-    //         lowest = customers[i];
-    //         lowestCustomer = i + 1;
-    //     }
-    // }
-
-    // Sorting the array
-    int temp{};
-
-    for(int i{};i < 9; i++){
-        if(customers[i] > customers[i +1]){
-            temp = customers[i];
-            customers[i] = customers[i + 1];
-            customers[i + 1] = temp;
+    // Finding the highest value
+    int highest = customers_pancakes[0][0];
+    for (int i{0}; i < num_of_customers; i++)
+    {
+        if (highest < customers_pancakes[i][1])
+        {
+            highest = customers_pancakes[i][1];
+            winner_customer = customers_pancakes[i][0];
         }
     }
-    // cout << "The lowest amount of pancakes(" << lowest << ") was eaten by Person " << lowestCustomer << endl;
-    
-    cout << "[ ";
-    for (int i{0}; i < 5; i++)
+    cout << "The highest amount of pancakes(" << highest << ") was eaten by Person " << winner_customer << endl;
+
+    // Finding the lowest value
+    int lowest = customers_pancakes[0][0];
+    for (int i{0}; i < num_of_customers; i++)
     {
-        cout << customers[i] << " ";
+        if (lowest > customers_pancakes[i][1])
+        {
+            lowest = customers_pancakes[i][1];
+            winner_customer = customers_pancakes[i][0];
+        }
     }
-    cout << "]" << endl;
+    cout << "The lowest amount of pancakes(" << lowest << ") was eaten by Person " << winner_customer << endl;
+
+
+    // Sorting the array
+    int customer_number{}; // Making a temporary variable to store the value of the customer's number;
+    int customer_pancake_number{}; // Making a temporary variable to store the value of the customer's amount of pancakes eaten;
+
+    for (int i{}; i < num_of_customers - 1; i++)
+    {
+        for (int j{}; j < num_of_customers - 1 - i; j++)
+        {
+            if (customers_pancakes[j][1] > customers_pancakes[j + 1][1])
+            {
+                customer_number = customers_pancakes[j][0];
+                customer_pancake_number = customers_pancakes[j][1];
+                customers_pancakes[j][0] = customers_pancakes[j + 1][0];
+                customers_pancakes[j][1] = customers_pancakes[j + 1][1];
+                customers_pancakes[j + 1][0] = customer_number;
+                customers_pancakes[j + 1][1] = customer_pancake_number;
+            }
+        }
+    }
+
+    cout << "A list of the customers in ascending order by number of pancakes eaten." << endl;
+    
+    for (int i{}; i < num_of_customers; i++)
+    {
+        cout << "Person " << customers_pancakes[i][0] << " ate: " << customers_pancakes[i][1] << " pancakes." << endl;
+    }
 
     return 0;
 }
