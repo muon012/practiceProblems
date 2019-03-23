@@ -1,4 +1,4 @@
-# Practice using generators
+#
 
 import tkinter
 import statistics
