@@ -1,6 +1,11 @@
 # Subclass: A class that inherits all the methods, data, and attributes of another "parent" class.
 # Method Resolution Order: The order by which python looks for certain methods in a class/object that may be inherited;
 
+# -------------- super() BEST PRACTICE ------------------
+# super() enables you to access the methods and members of a parent class without referring to the parent class by name.
+# For a single inheritance situation the first argument to super() should be the name of the current child class
+# calling super(), and the second argument should be self, that is, a reference to the current object calling super().
+
 
 class Employee:
 
